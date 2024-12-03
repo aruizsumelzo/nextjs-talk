@@ -1,15 +1,33 @@
-"use client";
+import Link from "next/link";
 
-import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
 export default function HomePage() {
-  const router = useRouter();
-
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="text-4xl mb-8">Bienvenido a la HomePage</h1>
-      <Button onClick={() => router.push("/logo")}>Ir al Logo 3D</Button>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-white text-black">
+      <h1 className="text-4xl font-semibold mb-10">
+        Bienvenido a la <span className="text-[#86BC25]">HomePage</span>
+      </h1>
+
+      <div className="flex flex-col items-center gap-6 w-full max-w-sm">
+        <Link href="/rendering" passHref>
+          <Button className="px-5 py-3 text-lg font-medium text-white bg-black rounded-md shadow hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-[#86BC25] transition-all">
+            Ejemplo de SSR
+          </Button>
+        </Link>
+
+        <Link href="/images" passHref>
+          <Button className="px-5 py-3 text-lg font-medium text-white bg-black rounded-md shadow hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-[#86BC25] transition-all">
+            Ejemplo con imágenes
+          </Button>
+        </Link>
+
+        <Link href="/logo" passHref>
+          <Button className="px-5 py-3 text-lg font-medium text-black bg-white border border-black rounded-md shadow hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#86BC25] transition-all">
+            Logo 3D
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 }

@@ -1,17 +1,22 @@
 "use client";
 
-import { Canvas } from "@react-three/fiber";
+import { useLoader } from "@react-three/fiber";
+import { SVGLoader } from "three/addons/loaders/SVGLoader.js";
+import { ExtrudeGeometry } from "three/src/geometries/ExtrudeGeometry.js";
 
 const Logo3D = () => {
+  const svgData = useLoader(SVGLoader, "/logo.svg");
+  const shapes = svgData.paths.flatMap((path) => path.toShapes(true));
+
+  const geometry = new ExtrudeGeometry(shapes, {
+    depth: 10,
+  });
+  geometry.center();
+
   return (
-    <Canvas>
-      <mesh>
-        <boxGeometry args={[2, 2, 2]} />
-        <meshPhongMaterial />
-      </mesh>
-      <ambientLight intensity={0.1} />
-      <directionalLight position={[0, 0, 5]} color="red" />
-    </Canvas>
+    <mesh geometry={geometry} scale={0.1}>
+      <meshPhongMaterial attach="material" />
+    </mesh>
   );
 };
 

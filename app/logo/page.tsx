@@ -9,13 +9,11 @@ import { OrbitControls } from "@react-three/drei";
 
 export default function Page() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <div className="w-500 h-150">
-        {" "}
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 text-gray-900 space-y-6 p-4">
+      <div className="w-full max-w-4xl aspect-video bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden">
         <Canvas camera={{ position: [0, 0, 20] }}>
           <OrbitControls enableZoom={true} enablePan={true} />
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[10, 10, 5]} intensity={1} />
+          <directionalLight position={[10, 10, 5]} />
           <Logo3D />
         </Canvas>
       </div>

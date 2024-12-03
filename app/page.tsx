@@ -18,7 +18,7 @@ export default function HomePage() {
 
         <Link href="/images" passHref>
           <Button className="px-5 py-3 text-lg font-medium text-white bg-black rounded-md shadow hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-[#86BC25] transition-all">
-            Ejemplo con imágenes
+            Ejemplos de componentes
           </Button>
         </Link>
 

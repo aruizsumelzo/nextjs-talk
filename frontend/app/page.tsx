@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-white text-black">
+    <div className="flex flex-col items-center justify-center h-[90vh] bg-white text-black">
       <h1 className="text-4xl font-semibold mb-10">
         Bienvenido a la <span className="text-[#86BC25]">HomePage</span>
       </h1>

@@ -18,3 +18,5 @@ out/
 # Ignorar las variables de entorno locales (debe ser gestionado en la configuración de producción)
 .env.local
 .env.*.local
+
+/backend/dist

@@ -18,7 +18,9 @@ interface ProductPageProps {
   };
 }
 
-export default async function ProductPage({ params }: ProductPageProps) {
+export default async function ProductPage(props: Promise<ProductPageProps>) {
+  const { params } = await props;
+
   const product = await fetchProductById(params.id);
 
   if (!product) {
@@ -40,6 +42,17 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <div className="max-w-4xl mx-auto bg-white shadow rounded-lg overflow-hidden">
         <Card>
           <CardHeader>
+            {product.image ? (
+              <img
+                src={`${process.env.BASE_URL}${product.image.url}`}
+                alt={product.title}
+                className="w-full h-48 object-cover rounded-md"
+              />
+            ) : (
+              <div className="w-full h-48 bg-gray-200 flex items-center justify-center text-gray-500 rounded-md">
+                No Image
+              </div>
+            )}
             <CardTitle className="text-2xl font-bold mb-2">
               Detalles del Producto
             </CardTitle>

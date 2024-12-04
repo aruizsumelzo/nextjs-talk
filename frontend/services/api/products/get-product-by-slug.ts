@@ -3,7 +3,7 @@ import { Product } from "@/interfaces/product";
 /**
  * Obtiene un producto por ID de la API de Strapi.
  */
-export async function fetchProductById(id: string): Promise<Product> {
+export async function fetchProductBySlug(id: string): Promise<Product> {
   const response = await fetch(
     `${process.env.BASE_URL_API}/product/${id}?populate=image`
   );

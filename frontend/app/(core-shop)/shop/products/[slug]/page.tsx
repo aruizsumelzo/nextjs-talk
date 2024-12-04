@@ -10,18 +10,18 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 
-import { fetchProductById } from "@/services/api/products/get-product-by-id";
+import { fetchProductBySlug } from "@/services/api/products/get-product-by-slug";
 
 interface ProductPageProps {
   params: {
-    id: string;
+    slug: string;
   };
 }
 
 export default async function ProductPage(props: Promise<ProductPageProps>) {
   const { params } = await props;
 
-  const product = await fetchProductById(params.id);
+  const product = await fetchProductBySlug(params.slug);
 
   if (!product) {
     notFound();

@@ -27,54 +27,53 @@ export default async function ProductPage(props: Promise<ProductPageProps>) {
     notFound();
   }
 
-  const { title, description, createdAt, updatedAt, publishedAt, documentId } =
+  const { title, description, createdAt, updatedAt, publishedAt, image } =
     product;
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold mb-4">{title}</h1>
-        <p className="text-gray-500 text-sm">
-          Publicado el {new Date(publishedAt).toLocaleDateString()}
-        </p>
+      <div className="mb-8">
+        {image ? (
+          <img
+            src={`${process.env.BASE_URL}${product.image.url}`}
+            alt={title}
+            className="w-full h-64 object-cover rounded-lg shadow-lg"
+          />
+        ) : (
+          <div className="w-full h-64 bg-gray-200 flex items-center justify-center text-gray-500 rounded-lg shadow-lg">
+            No Image Available
+          </div>
+        )}
+        <div className="text-center mt-6">
+          <h1 className="text-5xl font-bold text-gray-800">{title}</h1>
+          <p className="text-gray-500 text-sm mt-2">
+            Publicado el {new Date(publishedAt).toLocaleDateString()}
+          </p>
+        </div>
       </div>
 
       <div className="max-w-4xl mx-auto bg-white shadow rounded-lg overflow-hidden">
         <Card>
-          <CardHeader>
-            {product.image ? (
-              <img
-                src={`${process.env.BASE_URL}${product.image.url}`}
-                alt={product.title}
-                className="w-full h-48 object-cover rounded-md"
-              />
-            ) : (
-              <div className="w-full h-48 bg-gray-200 flex items-center justify-center text-gray-500 rounded-md">
-                No Image
-              </div>
-            )}
-            <CardTitle className="text-2xl font-bold mb-2">
+          <CardHeader className="px-6 py-4">
+            <h2 className="text-2xl font-semibold text-gray-800">
               Detalles del Producto
-            </CardTitle>
+            </h2>
           </CardHeader>
-          <CardContent>
-            <p className="text-gray-700 text-lg mb-4">{description}</p>
-            <div className="text-gray-600 text-sm space-y-1">
-              <p>
-                <strong>ID Documento:</strong> {documentId}
-              </p>
-              <p>
+          <CardContent className="px-6 py-4">
+            <p className="text-gray-700 text-lg mb-6">{description}</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-600">
+              <div>
                 <strong>Creado el:</strong>{" "}
                 {new Date(createdAt).toLocaleDateString()}
-              </p>
-              <p>
+              </div>
+              <div>
                 <strong>Actualizado el:</strong>{" "}
                 {new Date(updatedAt).toLocaleDateString()}
-              </p>
+              </div>
             </div>
           </CardContent>
-          <CardFooter className="flex justify-end space-x-4">
-            <Link href={`/shop`}>
+          <CardFooter className="px-6 py-4 flex justify-between">
+            <Link href="/shop">
               <Button className="bg-gray-100 border text-gray-700 hover:bg-gray-200">
                 Volver a la tienda
               </Button>

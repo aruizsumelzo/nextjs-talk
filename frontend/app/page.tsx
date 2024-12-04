@@ -27,6 +27,12 @@ export default function HomePage() {
             Logo 3D
           </Button>
         </Link>
+
+        <Link href="/shop" passHref>
+          <Button className="w-full bg-[#86BC25] text-white hover:bg-[#74a71f]">
+            Ir a la tienda
+          </Button>
+        </Link>
       </div>
     </div>
   );

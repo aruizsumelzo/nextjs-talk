@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import {
   Card,
   CardHeader,
@@ -6,33 +8,11 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+
 import { fetchProducts } from "@/services/api/products/get-products";
 
-const products = [
-  {
-    id: 1,
-    name: "Producto 1",
-    price: "$20.00",
-    description: "Descripción breve",
-  },
-  {
-    id: 2,
-    name: "Producto 2",
-    price: "$30.00",
-    description: "Descripción breve",
-  },
-  {
-    id: 3,
-    name: "Producto 3",
-    price: "$40.00",
-    description: "Descripción breve",
-  },
-];
-
 export default async function ShopPage() {
-  const productsApi = await fetchProducts();
-
-  console.log(productsApi);
+  const products = await fetchProducts();
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -42,17 +22,25 @@ export default async function ShopPage() {
           <Card key={product.id} className="shadow hover:shadow-lg transition">
             <CardHeader>
               <CardTitle className="text-lg font-bold">
-                {product.name}
+                {product.title}
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-gray-600">{product.description}</p>
+              <p className="text-sm text-gray-600 mb-4">
+                {product.description.length > 100
+                  ? `${product.description.slice(0, 100)}...`
+                  : product.description}
+              </p>
               <p className="text-xl font-semibold text-[#86BC25]">
-                {product.price}
+                {product.documentId}€
               </p>
             </CardContent>
             <CardFooter>
-              <Button className="w-full">Añadir al carrito</Button>
+              <Link href={`/shop/products/${product.documentId}`}>
+                <Button className="w-full bg-[#86BC25] text-white hover:bg-[#74a71f]">
+                  Ver Producto
+                </Button>
+              </Link>
             </CardFooter>
           </Card>
         ))}

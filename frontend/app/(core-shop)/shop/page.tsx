@@ -45,7 +45,7 @@ export default async function ShopPage() {
               </p>
             </CardContent>
             <CardFooter className="p-4">
-              <Link href={`/shop/products/${product.documentId}`}>
+              <Link href={`/shop/products/${product.slug}`}>
                 <Button className="w-full bg-gray-100 text-gray-800 border border-gray-300 hover:bg-[#86BC25] hover:text-white transition-all">
                   Ver Más
                 </Button>

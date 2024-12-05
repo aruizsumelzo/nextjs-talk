@@ -1,29 +1,60 @@
 import Image from "next/image";
+import Link from "next/link";
 
-import { ShoppingCart, Search } from "lucide-react";
+import { ShoppingCart, Search, ChevronDown } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
-export default function Header() {
+import { fetchCategories } from "@/services/api/categories/get-categories";
+
+import { Category } from "@/interfaces/categories";
+
+export default async function Header() {
+  const categories: Category[] = await fetchCategories();
   return (
     <header className="border-b bg-white sticky top-0 z-50 shadow-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <a
-          href="/"
-          className="flex items-center space-x-2 hover:opacity-90 transition"
-          aria-label="Homepage"
-        >
-          <Image
-            priority
-            src="/logo.svg"
-            height={40}
-            width={200}
-            alt="nextJS_talk_logo"
-          />
-        </a>
+        <div className="flex items-center space-x-4">
+          <Link
+            href="/"
+            className="flex items-center space-x-2 hover:opacity-90 transition"
+            aria-label="Homepage"
+          >
+            <Image
+              priority
+              src="/logo.svg"
+              height={40}
+              width={200}
+              alt="nextJS_talk_logo"
+            />
+          </Link>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="hidden md:flex">
+                Categories <ChevronDown className="ml-2 h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="w-56">
+              {categories.map((category) => (
+                <DropdownMenuItem key={category.id}>
+                  <Link href={`/category/${category.slug}`} className="w-full">
+                    {category.name}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+
         <div className="flex items-center space-x-4">
           <div className="hidden lg:flex items-center relative">
             <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />

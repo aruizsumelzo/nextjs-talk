@@ -1,9 +1,10 @@
-import { Image } from "@/interfaces/image";
-
 export interface Category {
   id: number;
+  documentId: string;
   name: string;
   slug: string;
   description: string;
-  image: Image | null;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
 }

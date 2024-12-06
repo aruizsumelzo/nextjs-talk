@@ -1,15 +1,15 @@
-import { notFound } from "next/navigation";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import {
   Card,
-  CardHeader,
   CardContent,
   CardFooter,
+  CardHeader,
 } from "@/components/ui/card";
 
-import { fetchProductBySlug } from "@/services/api/products/get-product-by-slug";
+import { getProduct } from "@/services/api/products";
 
 interface ProductPageProps {
   params: {
@@ -17,24 +17,20 @@ interface ProductPageProps {
   };
 }
 
-export default async function ProductPage(props: Promise<ProductPageProps>) {
-  const { params } = await props;
-
-  const product = await fetchProductBySlug(params.slug);
-
+export default async function ProductPage({ params }: Readonly<ProductPageProps>) {
+  const product = await getProduct(params.slug);
   if (!product) {
-    notFound();
+    return notFound();
   }
 
-  const { title, description, createdAt, updatedAt, publishedAt, image } =
-    product;
+  const { title, description, createdAt, updatedAt, publishedAt, image } = product;
 
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
         {image ? (
           <img
-            src={`${process.env.BASE_URL}${product.image.url}`}
+            src={`${process.env.BASE_URL}${image.url}`}
             alt={title}
             className="w-full h-64 object-cover rounded-lg shadow-lg"
           />

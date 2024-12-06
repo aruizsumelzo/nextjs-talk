@@ -1,18 +1,17 @@
 import Link from "next/link";
 
+import { Button } from "@/components/ui/button";
 import {
   Card,
-  CardHeader,
-  CardTitle,
   CardContent,
   CardFooter,
+  CardHeader,
+  CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-
-import { fetchProducts } from "@/services/api/products/get-products";
+import { getProducts } from "@/services/api/products";
 
 export default async function ShopPage() {
-  const products = await fetchProducts();
+  const products = await getProducts();
 
   return (
     <div className="container mx-auto px-4 py-8">

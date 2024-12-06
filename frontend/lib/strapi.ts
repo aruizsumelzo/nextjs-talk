@@ -1,19 +1,21 @@
 const { STRAPI_TOKEN, BASE_URL } = process.env
 
-export function query(url: string, page: number = 1, options: {
+export function query(item: string, options: {
     fields?: string[],
     populate?: string[],
     filters?: Record<string, Record<string, string>>,
     locale?: string,
     pageSize?: number | null,
+    page?: number,
     sort?: string[],
-} = {}) {
+} = {}, id?: string | null) {
     const {
         fields = [],
         populate = [],
         filters = {},
         locale = 'en',
         pageSize = null,
+        page = null,
         sort = [],
     } = options;
 
@@ -35,6 +37,7 @@ export function query(url: string, page: number = 1, options: {
             queryParams.push(`filters[${key}][${filterKey}]=${filters[key][filterKey]}`);
         }
     }
+
     if (page) {
         queryParams.push(`pagination[page]=${page}`);
     }
@@ -52,7 +55,8 @@ export function query(url: string, page: number = 1, options: {
     }
 
     const queryString = queryParams.length > 0 ? '?' + queryParams.join('&') : '';
-    const apiUrl = `${BASE_URL}/api/${url}${queryString}`;
+    const itemPath = id ? `${item}/${id}` : item;
+    const apiUrl = `${BASE_URL}/api/${itemPath}${queryString}`;
 
     return fetch(apiUrl, {
         method: 'GET',
@@ -62,16 +66,3 @@ export function query(url: string, page: number = 1, options: {
         }
     }).then(response => response.json());
 }
-
-// query('products', 2, {
-//     fields: ['name', 'slug', 'description'],
-//     populate: ['image'],
-//     filters: {
-//         categories: {
-//             slug: '$eq=electronics'
-//         }
-//     },
-//     locale: 'es',
-//     pageSize: 10,
-//     sort: ['price:asc', 'name:desc']
-// });

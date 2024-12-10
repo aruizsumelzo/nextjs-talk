@@ -1,21 +1,47 @@
-import Link from 'next/link';
+import { Card, CardContent } from '@/components/ui/card';
 
-import { Button } from '@/components/ui/button';
+import styles from '@/styles/cardOnScroll.module.css';
 
-export default function HomePage() {
+const cardData = [
+  { color: '#86BC25', textColor: '#FFFFFF', title: 'Welcome to Deloitte' },
+  { color: '#282828', textColor: '#FFFFFF', title: 'Our Mission' },
+  { color: '#D9D9D9', textColor: '#282828', title: 'Core Values' },
+  { color: '#FFFFFF', textColor: '#282828', title: 'Thank You!' },
+];
+
+const Homepage: React.FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-[90vh] bg-white text-black">
-      <h1 className="text-4xl font-semibold mb-10">
-        Bienvenido a la <span className="text-[#86BC25]">HomePage</span>
-      </h1>
-
-      <div className="flex flex-col items-center gap-6 w-full max-w-sm">
-        <Link href="/shop" passHref>
-          <Button className="w-full bg-[#86BC25] text-white hover:bg-[#74a71f]">
-            Ir a la tienda
-          </Button>
-        </Link>
+    <div
+      className={styles.container}
+      style={
+        {
+          '--cards': cardData.length,
+        } as React.CSSProperties
+      }
+    >
+      <div className={styles.cards}>
+        {cardData.map((card, index) => (
+          <div
+            key={index}
+            className={styles.card}
+            style={
+              {
+                '--index': index + 1,
+                '--color': card.color,
+                '--textColor': card.textColor,
+              } as React.CSSProperties
+            }
+          >
+            <Card>
+              <CardContent className={`${styles['card-body']}`}>
+                <h1>{card.title}</h1>
+              </CardContent>
+            </Card>
+          </div>
+        ))}
       </div>
     </div>
   );
-}
+};
+
+export default Homepage;

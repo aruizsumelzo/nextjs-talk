@@ -22,12 +22,6 @@ export default function HomePage() {
           </Button>
         </Link>
 
-        <Link href="/logo" passHref>
-          <Button className="px-5 py-3 text-lg font-medium text-black bg-white border border-black rounded-md shadow hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#86BC25] transition-all">
-            Logo 3D
-          </Button>
-        </Link>
-
         <Link href="/shop" passHref>
           <Button className="w-full bg-[#86BC25] text-white hover:bg-[#74a71f]">
             Ir a la tienda

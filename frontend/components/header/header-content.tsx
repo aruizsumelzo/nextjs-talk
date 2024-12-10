@@ -14,12 +14,13 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 
-import { fetchCategories } from '@/services/api/categories/get-categories';
+import { getCategories } from '@/services/api/products';
 
 import { Category } from '@/interfaces/categories';
 
 export async function HeaderContent() {
-  const categories: Category[] = await fetchCategories();
+  const categories: Category[] = await getCategories();
+  console.log('categories', categories);
 
   return (
     <header className="border-b bg-white sticky top-0 z-50 shadow-sm">

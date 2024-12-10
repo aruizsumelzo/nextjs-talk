@@ -26,12 +26,6 @@
       "relation": "oneToMany",
       "target": "api::products.products",
       "mappedBy": "category"
-    },
-    "devices": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::device.device",
-      "mappedBy": "category"
     }
   }
 }

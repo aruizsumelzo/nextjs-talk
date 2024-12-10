@@ -1,5 +1,7 @@
 import { notFound } from 'next/navigation';
 
+import { CalendarIcon } from 'lucide-react';
+
 import {
   Card,
   CardContent,
@@ -9,13 +11,11 @@ import {
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
-import { fetchCategoriesById } from '@/services/api/categories/get-category-by-id-document';
+import { getCategory } from '@/services/api/products';
 
 import { Category } from '@/interfaces/categories';
-import { CalendarIcon } from 'lucide-react';
 
 export default async function CategoryPage({
-  params,
   searchParams,
 }: {
   params: { slug: string };
@@ -24,8 +24,7 @@ export default async function CategoryPage({
   let category: Category;
 
   try {
-    console.log(params.slug);
-    category = await fetchCategoriesById(searchParams.documentId);
+    category = await getCategory(searchParams.documentId);
   } catch {
     notFound();
   }

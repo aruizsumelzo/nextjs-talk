@@ -10,6 +10,7 @@ export async function getProducts(): Promise<Product[]> {
   });
   return response.data;
 }
+
 export async function getProduct(slug: string): Promise<Product> {
   const response = await query('product', {
     fields: [],
@@ -22,4 +23,12 @@ export async function getProduct(slug: string): Promise<Product> {
 export async function getCategories(): Promise<Category[]> {
   const response = await query('categories');
   return response.data;
+}
+
+export async function getCategory(documentId: string): Promise<Category> {
+  const response = await query('categories', {
+    fields: [],
+    filters: { documentId: { $eq: documentId } },
+  });
+  return response.data[0];
 }

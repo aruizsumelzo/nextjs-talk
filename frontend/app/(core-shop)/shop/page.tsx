@@ -1,14 +1,14 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { getProducts } from "@/services/api/products";
+} from '@/components/ui/card';
+import { getProducts } from '@/services/api/products';
 
 export default async function ShopPage() {
   const products = await getProducts();

@@ -1,27 +1,27 @@
-import * as React from "react";
-import { Metadata } from "next";
-import Image from "next/image";
-import { ShoppingCart } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import * as React from 'react';
+import { Metadata } from 'next';
+import Image from 'next/image';
+import { ShoppingCart } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+} from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from '@/components/ui/select';
 
 export const metadata: Metadata = {
-  title: "Products",
-  description: "Browse our selection of products.",
+  title: 'Products',
+  description: 'Browse our selection of products.',
 };
 
 interface Product {
@@ -34,64 +34,64 @@ interface Product {
 
 const products: Product[] = [
   {
-    id: "1",
-    name: "Classic T-Shirt",
-    description: "A comfortable and stylish t-shirt for everyday wear.",
+    id: '1',
+    name: 'Classic T-Shirt',
+    description: 'A comfortable and stylish t-shirt for everyday wear.',
     price: 19.99,
-    image: "/placeholder.svg?height=200&width=200",
+    image: '/placeholder.svg?height=200&width=200',
   },
   {
-    id: "2",
-    name: "Denim Jeans",
+    id: '2',
+    name: 'Denim Jeans',
     description:
-      "High-quality denim jeans that are both durable and fashionable.",
+      'High-quality denim jeans that are both durable and fashionable.',
     price: 49.99,
-    image: "/placeholder.svg?height=200&width=200",
+    image: '/placeholder.svg?height=200&width=200',
   },
   {
-    id: "3",
-    name: "Sneakers",
-    description: "Lightweight and comfortable sneakers for all-day wear.",
+    id: '3',
+    name: 'Sneakers',
+    description: 'Lightweight and comfortable sneakers for all-day wear.',
     price: 79.99,
-    image: "/placeholder.svg?height=200&width=200",
+    image: '/placeholder.svg?height=200&width=200',
   },
   {
-    id: "4",
-    name: "Backpack",
-    description: "A spacious and sturdy backpack for your daily essentials.",
+    id: '4',
+    name: 'Backpack',
+    description: 'A spacious and sturdy backpack for your daily essentials.',
     price: 39.99,
-    image: "/placeholder.svg?height=200&width=200",
+    image: '/placeholder.svg?height=200&width=200',
   },
   {
-    id: "5",
-    name: "Sunglasses",
-    description: "Stylish sunglasses with UV protection for sunny days.",
+    id: '5',
+    name: 'Sunglasses',
+    description: 'Stylish sunglasses with UV protection for sunny days.',
     price: 29.99,
-    image: "/placeholder.svg?height=200&width=200",
+    image: '/placeholder.svg?height=200&width=200',
   },
   {
-    id: "6",
-    name: "Watch",
-    description: "A sleek and modern watch to keep you on time and in style.",
+    id: '6',
+    name: 'Watch',
+    description: 'A sleek and modern watch to keep you on time and in style.',
     price: 99.99,
-    image: "/placeholder.svg?height=200&width=200",
+    image: '/placeholder.svg?height=200&width=200',
   },
 ];
 
 export default function ProductsPage() {
-  const [searchTerm, setSearchTerm] = React.useState("");
-  const [sortBy, setSortBy] = React.useState("name");
+  const [searchTerm, setSearchTerm] = React.useState('');
+  const [sortBy, setSortBy] = React.useState('name');
 
   const filteredAndSortedProducts = products
     .filter((product) =>
       product.name.toLowerCase().includes(searchTerm.toLowerCase())
     )
     .sort((a, b) => {
-      if (sortBy === "name") {
+      if (sortBy === 'name') {
         return a.name.localeCompare(b.name);
-      } else if (sortBy === "price_asc") {
+      } else if (sortBy === 'price_asc') {
         return a.price - b.price;
-      } else if (sortBy === "price_desc") {
+      } else if (sortBy === 'price_desc') {
         return b.price - a.price;
       }
       return 0;

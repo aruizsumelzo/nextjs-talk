@@ -1,8 +1,8 @@
-import * as React from "react";
-import { Minus, Plus, X } from "lucide-react";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import * as React from 'react';
+import { Minus, Plus, X } from 'lucide-react';
+import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import {
   Table,
   TableBody,
@@ -10,15 +10,15 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from '@/components/ui/table';
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+} from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
 
 interface CartItem {
   id: string;
@@ -30,25 +30,25 @@ interface CartItem {
 
 const initialCartItems: CartItem[] = [
   {
-    id: "1",
-    name: "Product 1",
+    id: '1',
+    name: 'Product 1',
     price: 19.99,
     quantity: 1,
-    image: "/placeholder.svg?height=100&width=100",
+    image: '/placeholder.svg?height=100&width=100',
   },
   {
-    id: "2",
-    name: "Product 2",
+    id: '2',
+    name: 'Product 2',
     price: 29.99,
     quantity: 2,
-    image: "/placeholder.svg?height=100&width=100",
+    image: '/placeholder.svg?height=100&width=100',
   },
   {
-    id: "3",
-    name: "Product 3",
+    id: '3',
+    name: 'Product 3',
     price: 39.99,
     quantity: 1,
-    image: "/placeholder.svg?height=100&width=100",
+    image: '/placeholder.svg?height=100&width=100',
   },
 ];
 
@@ -201,22 +201,22 @@ export default function CartPage() {
 function RelatedProducts() {
   const relatedProducts = [
     {
-      id: "4",
-      name: "Related Product 1",
+      id: '4',
+      name: 'Related Product 1',
       price: 24.99,
-      image: "/placeholder.svg?height=200&width=200",
+      image: '/placeholder.svg?height=200&width=200',
     },
     {
-      id: "5",
-      name: "Related Product 2",
+      id: '5',
+      name: 'Related Product 2',
       price: 34.99,
-      image: "/placeholder.svg?height=200&width=200",
+      image: '/placeholder.svg?height=200&width=200',
     },
     {
-      id: "6",
-      name: "Related Product 3",
+      id: '6',
+      name: 'Related Product 3',
       price: 44.99,
-      image: "/placeholder.svg?height=200&width=200",
+      image: '/placeholder.svg?height=200&width=200',
     },
   ];
 

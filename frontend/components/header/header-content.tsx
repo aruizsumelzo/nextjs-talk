@@ -1,22 +1,22 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
-import { ShoppingCart, Search, ChevronDown } from "lucide-react";
+import { ShoppingCart, Search, ChevronDown } from 'lucide-react';
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
+} from '@/components/ui/dropdown-menu';
+import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
 
-import { fetchCategories } from "@/services/api/categories/get-categories";
+import { fetchCategories } from '@/services/api/categories/get-categories';
 
-import { Category } from "@/interfaces/categories";
+import { Category } from '@/interfaces/categories';
 
 export async function HeaderContent() {
   const categories: Category[] = await fetchCategories();

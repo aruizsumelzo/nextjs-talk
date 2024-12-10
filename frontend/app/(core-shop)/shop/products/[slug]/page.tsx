@@ -1,15 +1,15 @@
-import Link from "next/link";
-import { notFound } from "next/navigation";
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
-} from "@/components/ui/card";
+} from '@/components/ui/card';
 
-import { getProduct } from "@/services/api/products";
+import { getProduct } from '@/services/api/products';
 
 interface ProductPageProps {
   params: {
@@ -17,13 +17,16 @@ interface ProductPageProps {
   };
 }
 
-export default async function ProductPage({ params }: Readonly<ProductPageProps>) {
+export default async function ProductPage({
+  params,
+}: Readonly<ProductPageProps>) {
   const product = await getProduct(params.slug);
   if (!product) {
     return notFound();
   }
 
-  const { title, description, createdAt, updatedAt, publishedAt, image } = product;
+  const { title, description, createdAt, updatedAt, publishedAt, image } =
+    product;
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -58,11 +61,11 @@ export default async function ProductPage({ params }: Readonly<ProductPageProps>
             <p className="text-gray-700 text-lg mb-6">{description}</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-600">
               <div>
-                <strong>Creado el:</strong>{" "}
+                <strong>Creado el:</strong>{' '}
                 {new Date(createdAt).toLocaleDateString()}
               </div>
               <div>
-                <strong>Actualizado el:</strong>{" "}
+                <strong>Actualizado el:</strong>{' '}
                 {new Date(updatedAt).toLocaleDateString()}
               </div>
             </div>

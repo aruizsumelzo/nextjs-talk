@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound } from 'next/navigation';
 
 import {
   Card,
@@ -6,13 +6,13 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+} from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
-import { fetchCategoriesById } from "@/services/api/categories/get-category-by-id-document";
+import { fetchCategoriesById } from '@/services/api/categories/get-category-by-id-document';
 
-import { Category } from "@/interfaces/categories";
-import { CalendarIcon } from "lucide-react";
+import { Category } from '@/interfaces/categories';
+import { CalendarIcon } from 'lucide-react';
 
 export default async function CategoryPage({
   params,

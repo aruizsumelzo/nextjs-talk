@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from "next/image";
+import Image from 'next/image';
 
 const Images = () => {
   return (
     <div className="min-h-screen bg-white px-6 py-8 flex flex-col items-center">
       <h1 className="text-black mb-12 text-center scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
-        Comparación: Next.js <code>&lt;Image&gt;</code> vs{" "}
+        Comparación: Next.js <code>&lt;Image&gt;</code> vs{' '}
         <code>&lt;img&gt;</code>
       </h1>
 

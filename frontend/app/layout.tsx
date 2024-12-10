@@ -1,12 +1,12 @@
-import { Open_Sans } from "next/font/google";
+import { Open_Sans } from 'next/font/google';
 
-import "./globals.css";
+import './globals.css';
 
-import { Header } from "@/components/header/header";
+import { Header } from '@/components/header/header';
 
 const openSans = Open_Sans({
-  subsets: ["latin"],
-  display: "swap",
+  subsets: ['latin'],
+  display: 'swap',
 });
 
 export default function RootLayout({
